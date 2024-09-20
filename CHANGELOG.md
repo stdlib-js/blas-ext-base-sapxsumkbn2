@@ -4,7 +4,17 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2024-09-17)
+## Unreleased (2024-09-20)
+
+<section class="bug-fixes">
+
+### Bug Fixes
+
+-   [`898b50d`](https://github.com/stdlib-js/stdlib/commit/898b50d8d705bdf6a55db8cf1858ea1e1d257c35) - fix includes and types
+
+</section>
+
+<!-- /.bug-fixes -->
 
 <section class="commits">
 
@@ -12,6 +22,9 @@
 
 <details>
 
+-   [`e454c91`](https://github.com/stdlib-js/stdlib/commit/e454c91ae2af928b61effcddadb31548758f8675) - **chore:** improve code style and conditionals _(by Philipp Burckhardt)_
+-   [`898b50d`](https://github.com/stdlib-js/stdlib/commit/898b50d8d705bdf6a55db8cf1858ea1e1d257c35) - **fix:** fix includes and types _(by Philipp Burckhardt)_
+-   [`7e366ae`](https://github.com/stdlib-js/stdlib/commit/7e366ae8bd41439be0e99e958d1c3fbb1b7dd0c2) - **chore:** update package.json descriptions _(by Philipp Burckhardt)_
 -   [`ed44fee`](https://github.com/stdlib-js/stdlib/commit/ed44feecb9eaa5e0849d1a533e5415624d0aa338) - **style:** use imperative in package.json description and end with period _(by Philipp Burckhardt)_
 
 </details>
