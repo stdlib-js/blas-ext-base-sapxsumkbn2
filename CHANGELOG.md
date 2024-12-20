@@ -10,6 +10,7 @@
 
 ### Bug Fixes
 
+-   [`2222d50`](https://github.com/stdlib-js/stdlib/commit/2222d505c97a6c4f8acf89bdb3aae6f504589e04) - update include path and refactor addon
 -   [`898b50d`](https://github.com/stdlib-js/stdlib/commit/898b50d8d705bdf6a55db8cf1858ea1e1d257c35) - fix includes and types
 
 </section>
@@ -22,6 +23,7 @@
 
 <details>
 
+-   [`2222d50`](https://github.com/stdlib-js/stdlib/commit/2222d505c97a6c4f8acf89bdb3aae6f504589e04) - **fix:** update include path and refactor addon _(by Athan Reines)_
 -   [`c322b66`](https://github.com/stdlib-js/stdlib/commit/c322b6647751b73a9d0fe12bf5665e8e2243d4ca) - **docs:** update related packages sections [(#4070)](https://github.com/stdlib-js/stdlib/pull/4070) _(by stdlib-bot, Philipp Burckhardt)_
 -   [`e454c91`](https://github.com/stdlib-js/stdlib/commit/e454c91ae2af928b61effcddadb31548758f8675) - **chore:** improve code style and conditionals _(by Philipp Burckhardt)_
 -   [`898b50d`](https://github.com/stdlib-js/stdlib/commit/898b50d8d705bdf6a55db8cf1858ea1e1d257c35) - **fix:** fix includes and types _(by Philipp Burckhardt)_
@@ -38,8 +40,9 @@
 
 ### Contributors
 
-A total of 1 person contributed to this release. Thank you to this contributor:
+A total of 2 people contributed to this release. Thank you to the following contributors:
 
+-   Athan Reines
 -   Philipp Burckhardt
 
 </section>
