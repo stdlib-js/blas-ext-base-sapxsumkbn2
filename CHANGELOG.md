@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2024-12-01)
+## Unreleased (2024-12-20)
 
 <section class="bug-fixes">
 
@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`c322b66`](https://github.com/stdlib-js/stdlib/commit/c322b6647751b73a9d0fe12bf5665e8e2243d4ca) - **docs:** update related packages sections [(#4070)](https://github.com/stdlib-js/stdlib/pull/4070) _(by stdlib-bot, Philipp Burckhardt)_
 -   [`e454c91`](https://github.com/stdlib-js/stdlib/commit/e454c91ae2af928b61effcddadb31548758f8675) - **chore:** improve code style and conditionals _(by Philipp Burckhardt)_
 -   [`898b50d`](https://github.com/stdlib-js/stdlib/commit/898b50d8d705bdf6a55db8cf1858ea1e1d257c35) - **fix:** fix includes and types _(by Philipp Burckhardt)_
 -   [`7e366ae`](https://github.com/stdlib-js/stdlib/commit/7e366ae8bd41439be0e99e958d1c3fbb1b7dd0c2) - **chore:** update package.json descriptions _(by Philipp Burckhardt)_
@@ -64,7 +65,7 @@ A total of 1 person contributed to this release. Thank you to this contributor:
 -   [`d04dcbd`](https://github.com/stdlib-js/stdlib/commit/d04dcbd6dc3b0bf4a89bd3947d317fa5ff15bb38) - **docs:** remove private annotations in C comments _(by Philipp Burckhardt)_
 -   [`ceb4943`](https://github.com/stdlib-js/stdlib/commit/ceb494351d42c2505e559a2c8aad9a120c76d0db) - **docs:** remove comments _(by Athan Reines)_
 -   [`0244027`](https://github.com/stdlib-js/stdlib/commit/0244027e1e2c0ceb1cd8ae1808196c24fa77b142) - **chore:** add missing trailing newlines _(by Philipp Burckhardt)_
--   [`8e8b47c`](https://github.com/stdlib-js/stdlib/commit/8e8b47cf5e52ef7543b99c3004075457316c611d) - **refactor:** `blas/ext/base/sapxsumkbn2` to follow current project conventions _(by Shivam, Philipp Burckhardt)_
+-   [`8e8b47c`](https://github.com/stdlib-js/stdlib/commit/8e8b47cf5e52ef7543b99c3004075457316c611d) - **refactor:** `blas/ext/base/sapxsumkbn2` to follow current project conventions _(by Shivam Ahir, Philipp Burckhardt)_
 
 </details>
 
@@ -80,7 +81,7 @@ A total of 3 people contributed to this release. Thank you to the following cont
 
 -   Athan Reines
 -   Philipp Burckhardt
--   Shivam
+-   Shivam Ahir
 
 </section>
 
