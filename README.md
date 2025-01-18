@@ -33,7 +33,7 @@ limitations under the License.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
-> Add a constant to each single-precision floating-point strided array element and compute the sum using a second-order iterative Kahan–Babuška algorithm.
+> Add a scalar constant to each single-precision floating-point strided array element and compute the sum using a second-order iterative Kahan–Babuška algorithm.
 
 <section class="intro">
 
@@ -41,51 +41,44 @@ limitations under the License.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-sapxsumkbn2
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-sapxsumkbn2 = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-sapxsumkbn2@umd/browser.js' )
+var sapxsumkbn2 = require( '@stdlib/blas-ext-base-sapxsumkbn2' );
 ```
 
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+#### sapxsumkbn2( N, alpha, x, strideX )
 
-```javascript
-var sapxsumkbn2 = require( 'path/to/vendor/umd/blas-ext-base-sapxsumkbn2/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-sapxsumkbn2@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.sapxsumkbn2;
-})();
-</script>
-```
-
-#### sapxsumkbn2( N, alpha, x, stride )
-
-Adds a constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm.
+Adds a scalar constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm.
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 1.0, -2.0, 2.0 ] );
-var N = x.length;
 
-var v = sapxsumkbn2( N, 5.0, x, 1 );
+var v = sapxsumkbn2( x.length, 5.0, x, 1 );
 // returns 16.0
 ```
 
@@ -93,9 +86,9 @@ The function has the following parameters:
 
 -   **N**: number of indexed elements.
 -   **x**: input [`Float32Array`][@stdlib/array/float32].
--   **stride**: index increment for `x`.
+-   **strideX**: stride length.
 
-The `N` and stride parameters determine which elements in the strided array are accessed at runtime. For example, to access every other element in `x`,
+The `N` and stride parameters determine which elements in the strided array are accessed at runtime. For example, to access every other element:
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
@@ -120,25 +113,24 @@ var v = sapxsumkbn2( 4, 5.0, x1, 2 );
 // returns 25.0
 ```
 
-#### sapxsumkbn2.ndarray( N, alpha, x, stride, offset )
+#### sapxsumkbn2.ndarray( N, alpha, x, strideX, offsetX )
 
-Adds a constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm and alternative indexing semantics.
+Adds a scalar constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm and alternative indexing semantics.
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 1.0, -2.0, 2.0 ] );
-var N = x.length;
 
-var v = sapxsumkbn2.ndarray( N, 5.0, x, 1, 0 );
+var v = sapxsumkbn2.ndarray( x.length, 5.0, x, 1, 0 );
 // returns 16.0
 ```
 
 The function has the following additional parameters:
 
--   **offset**: starting index for `x`.
+-   **offsetX**: starting index.
 
-While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying `buffer`, the `offset` parameter supports indexing semantics based on a starting index. For example, to access every other value in `x` starting from the second value
+While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying buffer, the offset parameter supports indexing semantics based on a starting index. For example, to access every other element starting from the second element:
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
@@ -169,33 +161,141 @@ var v = sapxsumkbn2.ndarray( 4, 5.0, x, 2, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {.factory;
-var filledarrayBy = require( '@stdlib/array-filled-by' );
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
 var sapxsumkbn2 = require( '@stdlib/blas-ext-base-sapxsumkbn2' );
 
-var x = filledarrayBy( 10, 'float32', discreteUniform( 0, 100 ) );
+var x = discreteUniform( 10, -100, 100, {
+    'dtype': 'float32'
+});
 console.log( x );
 
 var v = sapxsumkbn2( x.length, 5.0, x, 1 );
 console.log( v );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
 
 <!-- /.examples -->
 
+<!-- C interface documentation. -->
+
 * * *
+
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/blas/ext/base/sapxsumkbn2.h"
+```
+
+#### stdlib_strided_sapxsumkbn2( N, alpha, \*X, strideX )
+
+Adds a scalar constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm.
+
+```c
+const float x[] = { 1.0f, 2.0f, 3.0f, 4.0f };
+
+float v = stdlib_strided_sapxsumkbn2( 4, 5.0f, x, 1 );
+// returns 30.0f
+```
+
+The function accepts the following arguments:
+
+-   **N**: `[in] CBLAS_INT` number of indexed elements.
+-   **alpha**: `[in] float` scalar constant.
+-   **X**: `[in] float*` input array.
+-   **strideX**: `[in] CBLAS_INT` stride length.
+
+```c
+float stdlib_strided_sapxsumkbn2( const CBLAS_INT N, const float alpha, const float *X, const CBLAS_INT strideX );
+```
+
+#### stdlib_strided_sapxsumkbn2_ndarray( N, alpha, \*X, strideX, offsetX )
+
+Adds a scalar constant to each single-precision floating-point strided array element and computes the sum using a second-order iterative Kahan–Babuška algorithm and alternative indexing semantics.
+
+```c
+const float x[] = { 1.0f, 2.0f, 3.0f, 4.0f };
+
+float v = stdlib_strided_sapxsumkbn2_ndarray( 4, 5.0f, x, 1, 0 );
+// returns 30.0f
+```
+
+The function accepts the following arguments:
+
+-   **N**: `[in] CBLAS_INT` number of indexed elements.
+-   **alpha**: `[in] float` scalar constant.
+-   **X**: `[in] float*` input array.
+-   **strideX**: `[in] CBLAS_INT` stride length.
+-   **offsetX**: `[in] CBLAS_INT` starting index.
+
+```c
+float stdlib_strided_sapxsumkbn2_ndarray( const CBLAS_INT N, const float alpha, const float *X, const CBLAS_INT strideX, const CBLAS_INT offsetX );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/blas/ext/base/sapxsumkbn2.h"
+#include <stdio.h>
+
+int main( void ) {
+    // Create a strided array:
+    const float x[] = { 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f };
+
+    // Specify the number of indexed elements:
+    const int N = 8;
+
+    // Specify a stride:
+    const int strideX = 1;
+
+    // Compute the sum:
+    float v = stdlib_strided_sapxsumkbn2( N, 5.0f, x, strideX );
+
+    // Print the result:
+    printf( "Sum: %f\n", v );
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <section class="references">
 
@@ -250,7 +350,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 </section>
 
@@ -296,7 +396,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-sapxsumkbn2/main/LICENSE
 
-[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32/tree/umd
+[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
@@ -304,13 +404,13 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/blas/ext/base/dapxsumkbn2]: https://github.com/stdlib-js/blas-ext-base-dapxsumkbn2/tree/umd
+[@stdlib/blas/ext/base/dapxsumkbn2]: https://github.com/stdlib-js/blas-ext-base-dapxsumkbn2
 
-[@stdlib/blas/ext/base/gapxsumkbn2]: https://github.com/stdlib-js/blas-ext-base-gapxsumkbn2/tree/umd
+[@stdlib/blas/ext/base/gapxsumkbn2]: https://github.com/stdlib-js/blas-ext-base-gapxsumkbn2
 
-[@stdlib/blas/ext/base/sapxsum]: https://github.com/stdlib-js/blas-ext-base-sapxsum/tree/umd
+[@stdlib/blas/ext/base/sapxsum]: https://github.com/stdlib-js/blas-ext-base-sapxsum
 
-[@stdlib/blas/ext/base/ssumkbn2]: https://github.com/stdlib-js/blas-ext-base-ssumkbn2/tree/umd
+[@stdlib/blas/ext/base/ssumkbn2]: https://github.com/stdlib-js/blas-ext-base-ssumkbn2
 
 <!-- </related-links> -->
 
